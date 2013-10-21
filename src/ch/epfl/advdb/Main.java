@@ -11,7 +11,7 @@ import org.apache.hadoop.fs.Path;
  *
  */
 public class Main {
-	//PICK ONE SOLUTION. (see paper) : 1 or 2 
+	//PICK ONE SOLUTION. (see description paper) : 1 or 2 
 	static int SOLUTION=2;
 	//COMPUTATION PARAMETERS
 	final static int DIMENSIONS=10;
@@ -74,7 +74,7 @@ public class Main {
 //			System.out.println("Previous RMSE:\t"+rmse_previous);
 //			System.out.println("Variation:\t"+(rmse_previous-rmse_current));
 			++it;
-		}while(true);
+		}while(true); //Add stoping conditions here
 		
 		//System.out.println("########END########");		
 	}
