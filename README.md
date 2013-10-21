@@ -20,7 +20,7 @@ UV decomposition is an iterative algorithm, so we designed and implemented the M
 
 We are given an input dataset that resides on HDFS on which we will perform this UV-decomposition. The data contains about 98 million ratings that 480189 users gave to 17770 movies. The format of this file is as follows:
 
-"<userID, movieID, grade, date-of-grade>"
+<<userID, movieID, grade, date-of-grade>>
 
 where grade has integer values from 1-5. UserID and MovieID have integer values that range from 1 to 480189 and 17770, respectively. Note that while the actual grades are integers in the range 1 to 5, submitted predictions need not be. This dataset having a massive size that is not suitable for github, we provide a smaller dataset that contains ratings of 5000 users for 100 movies (/std11/inputs/). The dataset can be be conveniently run on your local machine. Before running your code on the cluster, perform experiments on your local machine
 exhaustively.
