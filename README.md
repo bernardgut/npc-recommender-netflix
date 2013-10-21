@@ -1,36 +1,36 @@
-recommander
+Recommander
 ===========
 
 Map-Reduce implementation of a recommander system using a content based approach. 
 
-# Introduction
+## Introduction
 
 The goal of this project is to implement a recommendation system for the Netflix prize challenge. The requirement was to implement collaborative filtering using Hadoop (an open-source MapReduce [2] implementation). The Netflix Prize was an open competition for implementing the best collaborative filtering
 algorithm for recommending movies to subscribed users. The grand prize of one million dollars was given to the winning team. For more information about the Netflix prize see
 http://en.wikipedia.org/wiki/Netflix_Prize.
 
 
-# Description
+## Description
 
 We implement a recommender system using the UV-decomposition algorithm as described in "Mining of Massive Datasets" textbook, chapter 9 [1]. The implementation has to be done using Hadoop to make use of distributed computation.
 
 UV decomposition is an iterative algorithm, so we designed and implemented the Map and Reduce phases of each iteration that run in cascade. We maintain the connection between these iterations by taking the output of iteration i as the input of iteration i+1. Use the RMSE method to estimate the error of our solution. It also serve as a stopping criterion between iterations; We stop our iterative process if the error difference between two iterations falls below 0.01 or if the algorithm runs more than 20 minutes (or ~10 iterations). You can edit that in the Main.java source code.
 
-## Inputs
+### Input
 
 We are given an input dataset that resides on HDFS on which we will perform this UV-decomposition. The data contains about 98 million ratings that 480189 users gave to 17770 movies. The format of this file is as follows:
 
-<userID, movieID, grade, date-of-grade>
+"<userID, movieID, grade, date-of-grade>"
 
 where grade has integer values from 1-5. UserID and MovieID have integer values that range from 1 to 480189 and 17770, respectively. Note that while the actual grades are integers in the range 1 to 5, submitted predictions need not be. This dataset having a massive size that is not suitable for github, we provide a smaller dataset that contains ratings of 5000 users for 100 movies (/std11/inputs/). The dataset can be be conveniently run on your local machine. Before running your code on the cluster, perform experiments on your local machine
 exhaustively.
 
-## Outputs
+### Output
 
 Our output are the U and V matrices. The output format of these matrices is as follows
 
-<U, userID, [1..10], value> and
-<V, [1..10], movieID, value>
+"<U, userID, [1..10], value>" and
+"<V, [1..10], movieID, value>"
 
 The output matrices are stored as one or more text files on HDFS according to the following rules:
 1) We store U and V of one iteration in two separate directories, we are required to use the following path formats:
