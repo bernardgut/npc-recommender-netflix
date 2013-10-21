@@ -29,26 +29,28 @@ exhaustively.
 
 Our output are the U and V matrices. The output format of these matrices is as follows
 
-"<U, userID, [1..10], value>" and
-"<V, [1..10], movieID, value>"
+\<U, userID, [1..10], value\> and
+\<V, [1..10], movieID, value\>
 
-The output matrices are stored as one or more text files on HDFS according to the following rules:
-1) We store U and V of one iteration in two separate directories, we are required to use the following path formats:
+The output matrices are stored as one or more text files on HDFS according to the following rule:
+We store U and V of one iteration in two separate directories, we are required to use the following path formats:
+
 /std11/output/U_i
 /std11/output/V_i
+
 where U_i is a directory that contains matrix U at iteration i.
 The produced matrices approximate the normalized utility matrix; that is, we do not undo the normalization step.
 
-#Disclaimer
+## Disclaimer
 Don’t expect great response times. Hadoop is always a bit sluggish – even if the system is not heavily loaded, it is not strikingly efficient, which is annoying for small and simple jobs, but it is scalable. Don't be frustrated about the Hadoop performance, it's not necessarily a problem in the code.
 
 
-#References
+## References
 [1] Mining of Massive Datasets -Anand Rajaraman (Kosmix, Inc). Jeffrey D. Ullman (Stanford Univ).
-[2] Google
 
-#Note on our Runtime Environment
+[2] Google MapReduce Paper
 
+## Note on our Runtime Environment
 Our cluster has four blades and it runs a virtualized Solaris-based environment with 96 hardware threads (~=cores). Four nodes are designated gateways dedicated for communication with the outside world (called “global zones” on Solaris), i.e. they are visible globally and can be connected to via ssh. These nodes are called **** (edited). Each global zone manages a blade and shares memory and I/O with 22 "local zones". These
 are virtual machines that each have a hardware thread exclusively assigned to them -- so work
 can run on each of these local zones in parallel. The names of these zones have the following
@@ -56,6 +58,7 @@ format: ******* (edited). Each local zone has 2GB of RAM assigned to it. Hadoop 
 http://******/(namenode)
 http://******/(jobtracker)
 Data is stored on HDFS, Hadoop's distributed and replicated file system.
+
 
 A tutorial for writing MapReduce programs in Hadoop can be found on:
 http://hadoop.apache.org/docs/r1.1.1/mapred_tutorial.html
