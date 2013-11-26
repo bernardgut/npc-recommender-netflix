@@ -1,4 +1,4 @@
-NETFLIX Recommandations building tool on MapReduce
+NETFLIX-IMDB Recommandation building tool on MapReduce
 ===========
 
 Map-Reduce implementation that aim at building a recommandation system using collaborative filtering, on a dataset of Netflix user ratings of movies. This is the first part of a two-step process where the final output is a set of movie that a given user is likely to like. In this part, we use collaborative filtering on a NETFLIX dataset of users in order to cluster them by similarity. The output of this system is then used as input for the next step, which is the collaborative filtering and matching of user clusters with movies. See "bernardgut/recommander_imdb" for the second step. 
