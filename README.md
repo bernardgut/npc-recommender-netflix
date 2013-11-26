@@ -41,9 +41,10 @@ We store U and V of one iteration in two separate directories, we are required t
 where U_i is a directory that contains matrix U at iteration i.
 The produced matrices approximate the normalized utility matrix; that is, we do not undo the normalization step.
 
-## Disclaimer
+## NOTES
 Don’t expect great response times. Hadoop is always a bit sluggish – even if the system is not heavily loaded, it is not strikingly efficient, which is annoying for small and simple jobs, but it is scalable. Don't be frustrated about the Hadoop performance, it's not necessarily a problem in the code.
 
+The Hadoop distribution used throughout this project is Apache Hadoop 0.21 
 
 ## References
 [1] Mining of Massive Datasets -Anand Rajaraman (Kosmix, Inc). Jeffrey D. Ullman (Stanford Univ).
